@@ -6,6 +6,7 @@ using TemplatingLibTests.BenchMarkUtility;
 
 namespace TemplatingLibTests
 {
+
     [TestClass]
     public class UnitTest1
     {
@@ -92,9 +93,7 @@ namespace TemplatingLibTests
         {
             Clock.Benchmark("mustache. Handlebars", () =>
             {
-                var compiler = new FormatCompiler();
-                var generator = compiler.Compile(template);
-                var result = generator.Render(context);
+                //
             }, iteration);
         }
     }
