@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using FuManchu;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mustache;
@@ -13,24 +15,7 @@ namespace TemplatingLibTests
         private readonly object context = new {world = "World"};
         private readonly int iteration = 100;
 
-        private readonly string template =
-            @"{{#if value}}
-    True
-{{/if}}
-
-{{#if value}}
-    True
-{{else}}
-    False
-{{/if}}
-
-{{#if value1}}
-    Value 1
-{{#elseif value2}}
-    Value 2
-{{else}}
-   None
-{{/if}}";
+      
 
         [TestMethod]
         public void FuManchuTest_separate()
@@ -85,7 +70,10 @@ namespace TemplatingLibTests
         //{
         //    Clock.BenchmarkCpu("busy man", () =>
         //    {
-        //        new BusyMan().FindPrimeNumber(1000000);
+        //        Parallel.ForEach(Enumerable.Range(0,100000),async (currentFile) =>
+        //        {
+        //            await  Task.Run(() => new BusyMan().FindPrimeNumber(1000000000));
+        //        });
         //    }, iteration);
         //}
         [TestMethod]
@@ -96,37 +84,25 @@ namespace TemplatingLibTests
                 //
             }, iteration);
         }
+        private readonly string template =
+          @"{{#if value}}
+    True
+{{/if}}
+
+{{#if value}}
+    True
+{{else}}
+    False
+{{/if}}
+
+{{#if value1}}
+    Value 1
+{{#elseif value2}}
+    Value 2
+{{else}}
+   None
+{{/if}}";
     }
 
-    public class BusyMan
-    {
-        public void Slow()
-        {
-            var nthPrime = FindPrimeNumber(1000); //set higher value for more time
-        }
 
-        public long FindPrimeNumber(int n)
-        {
-            var count = 0;
-            long a = 2;
-            while (count < n)
-            {
-                long b = 2;
-                var prime = 1; // to check if found a prime
-                while (b*b <= a)
-                {
-                    if (a%b == 0)
-                    {
-                        prime = 0;
-                        break;
-                    }
-                    b++;
-                }
-                if (prime > 0)
-                    count++;
-                a++;
-            }
-            return --a;
-        }
-    }
 }

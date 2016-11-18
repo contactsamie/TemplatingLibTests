@@ -115,6 +115,7 @@
     <Compile Include="BenchMarkUtility\IStopwatch.cs" />
     <Compile Include="BenchMarkUtility\SomeExt.cs" />
     <Compile Include="BenchMarkUtility\TimeWatch.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
